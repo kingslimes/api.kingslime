@@ -30,7 +30,9 @@ const uploadFile = async ( fileObject ) => {
     });
     return data
 };
-
+uploadRouter.get('/', ( req, res ) => {
+    res.json({ code:200, message:"Connect successful" })
+});
 uploadRouter.post('/', multer.any(), async (req, res) => {
     const { files } = req;
     const result = [];
