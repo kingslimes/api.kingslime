@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 const cors = require("cors");
 const stream = require("stream");
 const server = require("express");
@@ -14,7 +15,7 @@ const uploadFile = async ( fileObject ) => {
     const bufferStream = new stream.PassThrough();
     bufferStream.end( fileObject.buffer );
     const auth = new google.auth.GoogleAuth({
-        keyFile: './google.json',
+        keyFile: path.join(__dirname,'./google.json'),
         scopes: ['https://www.googleapis.com/auth/drive']
     })
     const fileName = `API_IMG_${ new Date().getTime() }.${ fileObject.mimetype?.split('/')[1] }`;
