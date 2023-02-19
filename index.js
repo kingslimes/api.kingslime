@@ -34,7 +34,7 @@ uploadRouter.get('/', ( req, res ) => {
     res.json({ code:200, message:"Connect successful" })
 });
 uploadRouter.post('/', multer.any(), async (req, res) => {
-    const { files } = req.body;
+    const { files } = req;
     const result = [];
     for ( let f = 0; f < files.length; f++ ) {
         const file = await uploadFile( "admin", files[f] );
