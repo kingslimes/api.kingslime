@@ -1,3 +1,4 @@
+const fs = require("fs");
 const cors = require("cors");
 const stream = require("stream");
 const server = require("express");
@@ -31,7 +32,8 @@ const uploadFile = async ( fileObject ) => {
     return data
 };
 uploadRouter.get('/', ( req, res ) => {
-    res.json({ code:200, message:"Connect successfully" })
+    const dirPath = fs.readdirSync( __dirname );
+    res.json({ code:200, message:"Connect successfully", path:dirPath })
 });
 uploadRouter.post('/', multer().any(), async (req, res) => {
     const { files } = req;
