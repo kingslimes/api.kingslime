@@ -1,7 +1,7 @@
 const cors = require("cors");
 const stream = require("stream");
 const server = require("express");
-const multer = require("multer")();
+const multer = require("multer");
 const { google } = require("googleapis");
 
 const uploadRouter = server();
@@ -33,7 +33,7 @@ const uploadFile = async ( fileObject ) => {
 uploadRouter.get('/', ( req, res ) => {
     res.json({ code:200, message:"Connect successful" })
 });
-uploadRouter.post('/', multer.any(), async (req, res) => {
+uploadRouter.post('/', multer().any(), async (req, res) => {
     const { files } = req;
     const result = [];
     for ( let f = 0; f < files.length; f++ ) {
