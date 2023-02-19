@@ -38,7 +38,7 @@ uploadRouter.post('/', multer().any(), async (req, res) => {
     const result = [];
     for ( let f = 0; f < files.length; f++ ) {
         const file = await uploadFile( "admin", files[f] );
-        results.push( file.id )
+        result.push( file.id )
     }
     res.json({ result });
 });
