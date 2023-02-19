@@ -32,8 +32,7 @@ const uploadFile = async ( fileObject ) => {
     return data
 };
 uploadRouter.get('/', ( req, res ) => {
-    const dirPath = fs.readdirSync( __dirname );
-    res.json({ code:200, message:"Connect successfully", path:dirPath })
+    res.send('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Kingslime API</title></head><body>Null</body></html>')
 });
 uploadRouter.post('/', multer().any(), async (req, res) => {
     const { files } = req;
