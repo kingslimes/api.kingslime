@@ -31,13 +31,13 @@ const uploadFile = async ( fileObject ) => {
     return data
 };
 uploadRouter.get('/', ( req, res ) => {
-    res.json({ code:200, message:"Connect successful" })
+    res.json({ code:200, message:"Connect successfully" })
 });
 uploadRouter.post('/', multer().any(), async (req, res) => {
     const { files } = req;
     const result = [];
     for ( let f = 0; f < files.length; f++ ) {
-        const file = await uploadFile( "admin", files[f] );
+        const file = await uploadFile( files[f] );
         result.push( file.id )
     }
     res.json({ result });
