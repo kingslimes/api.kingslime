@@ -1,9 +1,11 @@
+const cors = require("cors");
 const stream = require("stream");
 const server = require("express");
 const multer = require("multer")();
 const { google } = require("googleapis");
 
 const uploadRouter = server();
+uploadRouter.use( cors() );
 uploadRouter.use( server.json({limit:"10gb"}) );
 uploadRouter.use( server.urlencoded({extended:true,limit:"10gb"}) );
 
