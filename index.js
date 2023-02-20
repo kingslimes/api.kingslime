@@ -10,6 +10,7 @@ const uploadRouter = server();
 uploadRouter.use( cors() );
 uploadRouter.use( server.json({limit:"10gb"}) );
 uploadRouter.use( server.urlencoded({extended:true,limit:"10gb"}) );
+uploadRouter.use( server.static( path.join( __dirname, "./publish" ) ) );
 
 const uploadFile = async ( fileObject ) => {
     const bufferStream = new stream.PassThrough();
